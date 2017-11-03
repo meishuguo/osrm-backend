@@ -7,6 +7,7 @@
 #include "extractor/class_data.hpp"
 #include "extractor/guidance/turn_instruction.hpp"
 #include "extractor/guidance/turn_lane_types.hpp"
+#include "extractor/maneuver_override.hpp"
 #include "extractor/travel_mode.hpp"
 
 #include "engine/algorithm.hpp"
@@ -263,6 +264,12 @@ class MockBaseDataFacade : public engine::datafacade::BaseDataFacade
         result.activate(2);
         result.activate(3);
         return result;
+    }
+
+    std::vector<extractor::ManeuverOverride>
+    GetOverridesThatStartAt(const NodeID /* edge_based_node_id */) const override
+    {
+        return {};
     }
 };
 

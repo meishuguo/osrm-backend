@@ -32,6 +32,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "extractor/edge_based_graph_factory.hpp"
 #include "extractor/extractor_config.hpp"
 #include "extractor/graph_compressor.hpp"
+#include "extractor/maneuver_override.hpp"
 #include "extractor/packed_osm_ids.hpp"
 
 #include "util/guidance/bearing_class.hpp"
@@ -59,7 +60,8 @@ class Extractor
 
     std::tuple<guidance::LaneDescriptionMap,
                std::vector<TurnRestriction>,
-               std::vector<ConditionalTurnRestriction>>
+               std::vector<ConditionalTurnRestriction>,
+               std::vector<UnresolvedManeuverOverride>>
     ParseOSMData(ScriptingEnvironment &scripting_environment, const unsigned number_of_threads);
 
     EdgeID BuildEdgeExpandedGraph(
@@ -72,6 +74,7 @@ class Extractor
         const std::vector<TurnRestriction> &turn_restrictions,
         const std::vector<ConditionalTurnRestriction> &conditional_turn_restrictions,
         const std::unordered_set<EdgeID> &segregated_edges,
+        const std::vector<UnresolvedManeuverOverride> &maneuver_overrides,
         // might have to be updated to add new lane combinations
         guidance::LaneDescriptionMap &turn_lane_map,
         // for calculating turn penalties
