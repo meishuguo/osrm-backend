@@ -5,6 +5,8 @@
       - FIXED #4781: Fixed overflow exceptions in percent-encoding parsing
     - Guidance:
       - CHANGED #4706: Guidance refactoring step to decouple intersection connectivity analysis and turn instructions generation [#4706](https://github.com/Project-OSRM/osrm-backend/pull/4706)
+    - Profile:
+      - ADDED Exposes more information to the turn function, now being able to set turn weights with highway and access information of the turn as well as other roads at the intersection [#4775](https://github.com/Project-OSRM/osrm-backend/issues/4775)
 
 # 5.14.3
   - Changes from 5.14.2:
